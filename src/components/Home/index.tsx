@@ -1,9 +1,7 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -13,16 +11,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useApi } from '~/hooks/useApi';
 import { useState } from 'react';
 import { Product } from '~/types/Product';
-import { CardComponent } from './Card';
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  SelectChangeEvent,
-} from '@mui/material';
+import { CardComponent } from '../Card';
 import { Category } from '~/types/Category';
+import { Tab, Tabs } from '@mui/material';
 
 function Copyright() {
   return (
@@ -40,30 +31,28 @@ const theme = createTheme();
 
 export const Home = () => {
   const api = useApi();
-  const [products, setProducts] = useState<Product[] | null>([]);
-  const [categories, setCategories] = useState<Category | null>([]);
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<Category>();
+  const [tabValue, setTabValue] = useState('61ab1ca64a0fef3f27dc663all');
 
   React.useEffect(() => {
-    const setData = async () => {
-      const data = await api.getData();
-      setProducts(data);
-    };
     setData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
-    createCategories(products!);
+    createCategories();
   }, [products]);
 
-  React.useEffect(() => {
-    // filterCategories();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCategory]);
+  const setData = async () => {
+    const data = await api.getData();
+    setProducts(data);
+  };
 
-  const createCategories = (item: Product[]) => {
-    const categoriesArr = item.map((product) => product.category);
+  const createCategories = async () => {
+    const categoriesArr = await products.map((product) => product.category);
 
     const uniqueIds: any[] = [];
 
@@ -80,18 +69,15 @@ export const Home = () => {
     setCategories(uniqueCategories);
   };
 
-  const filterCategories = () => {
-    const newCategories = products?.filter((item) => item.category._id === selectedCategory._id);
-    setProducts(newCategories);
-  };
-
-  const handleChange = (event: SelectChangeEvent<Category>) => {
-    const {
-      target: { value },
-    } = event;
-    const category = categories?.find((item) => item._id === value);
-    setSelectedCategory(category);
-    console.log(category);
+  const handleChange = (event: React.SyntheticEvent<Element, Event>, value: any) => {
+    setTabValue(value);
+    if (value !== '61ab1ca64a0fef3f27dc663all') {
+      const category = categories.find((item) => item._id === value);
+      const newProducts = products?.filter((item) => item.category._id === category?._id);
+      setProducts(newProducts);
+      return;
+    }
+    setData();
   };
 
   return (
@@ -99,41 +85,23 @@ export const Home = () => {
       <CssBaseline />
       <AppBar position='relative'>
         <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
           <Typography variant='h6' color='inherit' noWrap>
             ArcH-Store
           </Typography>
+          <Tabs
+            indicatorColor='secondary'
+            textColor='inherit'
+            value={tabValue}
+            onChange={handleChange}
+          >
+            <Tab value='61ab1ca64a0fef3f27dc663all' label='All Products' />
+            {categories?.map((element) => (
+              <Tab key={element._id} value={element._id} label={element.name} />
+            ))}
+          </Tabs>
         </Toolbar>
       </AppBar>
       <main>
-        {/* Hero unit */}
-        <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container maxWidth='sm'>
-            <Stack sx={{ pt: 4 }} direction='row' spacing={2} justifyContent='center'>
-              <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id='demo-multiple-name-label'>Categories</InputLabel>
-                <Select
-                  labelId='demo-multiple-name-label'
-                  id='demo-multiple-name'
-                  onChange={handleChange}
-                  input={<OutlinedInput label='Name' />}
-                >
-                  {categories?.map((element) => (
-                    <MenuItem key={element._id} value={element._id}>
-                      {element.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Stack>
-          </Container>
-        </Box>
         <Container sx={{ py: 8 }} maxWidth='md'>
           <Grid container spacing={4}>
             {products?.map((product) => (
