@@ -31,6 +31,7 @@ const theme = createTheme();
 export const Home = () => {
   const api = useApi();
   const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [tabValue, setTabValue] = useState('61ab1ca64a0fef3f27dc663all');
 
@@ -41,20 +42,22 @@ export const Home = () => {
 
   React.useEffect(() => {
     createCategories();
+    console.log(categories);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products]);
+  }, []);
 
   const setData = async () => {
-    const data = await api.getData();
+    const data = await api.getProducts();
     setProducts(data);
+    setFilteredProducts(data);
   };
 
   const createCategories = async () => {
-    const categoriesArr = await products.map((product) => product.category);
+    const categoriesArr = await api.getCategories();
 
     const uniqueIds: any[] = [];
 
-    const uniqueCategories = categoriesArr.filter((element) => {
+    const uniqueCategories = categoriesArr.filter((element: Category) => {
       const isDuplicate = uniqueIds.includes(element._id);
       if (!isDuplicate) {
         uniqueIds.push(element._id);
@@ -72,10 +75,11 @@ export const Home = () => {
     if (value !== '61ab1ca64a0fef3f27dc663all') {
       const category = categories.find((item) => item._id === value);
       const newProducts = products?.filter((item) => item.category._id === category?._id);
-      setProducts(newProducts);
+      console.table(newProducts);
+      setFilteredProducts(newProducts);
       return;
     }
-    setData();
+    setFilteredProducts(products);
   };
 
   return (
@@ -89,6 +93,7 @@ export const Home = () => {
           <Tabs
             indicatorColor='secondary'
             textColor='inherit'
+            variant='scrollable'
             value={tabValue}
             onChange={handleChange}
           >
@@ -102,15 +107,19 @@ export const Home = () => {
       <main>
         <Container sx={{ py: 8 }} maxWidth='md'>
           <Grid container spacing={4}>
-            {products?.map((product) => (
-              <CardComponent
-                key={product._id}
-                image={product.image}
-                title={product.title}
-                description={product.description}
-                price={product.price}
-              />
-            ))}
+            {filteredProducts ? (
+              filteredProducts?.map((product) => (
+                <CardComponent
+                  key={product._id}
+                  image={product.image}
+                  title={product.title}
+                  description={product.description}
+                  price={product.price}
+                />
+              ))
+            ) : (
+              <Typography>Sem Produtos</Typography>
+            )}
           </Grid>
         </Container>
       </main>
