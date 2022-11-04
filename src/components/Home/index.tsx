@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
@@ -9,7 +9,6 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useApi } from '~/hooks/useApi';
-import { useState } from 'react';
 import { Product } from '~/types/Product';
 import { CardComponent } from '../Card';
 import { Category } from '~/types/Category';
@@ -32,9 +31,7 @@ const theme = createTheme();
 export const Home = () => {
   const api = useApi();
   const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<Category>();
   const [tabValue, setTabValue] = useState('61ab1ca64a0fef3f27dc663all');
 
   React.useEffect(() => {
@@ -44,6 +41,7 @@ export const Home = () => {
 
   React.useEffect(() => {
     createCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
   const setData = async () => {
@@ -69,7 +67,7 @@ export const Home = () => {
     setCategories(uniqueCategories);
   };
 
-  const handleChange = (event: React.SyntheticEvent<Element, Event>, value: any) => {
+  const handleChange = (_event: React.SyntheticEvent<Element, Event>, value: any) => {
     setTabValue(value);
     if (value !== '61ab1ca64a0fef3f27dc663all') {
       const category = categories.find((item) => item._id === value);
