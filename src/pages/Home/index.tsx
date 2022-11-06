@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { useApi } from '~/hooks/useApi';
 import { Product } from '~/types/Product';
 import { CardComponent } from '../../components/Card';
 import { Category } from '~/types/Category';
 import { NavBarComponent } from '~/components/NavBar';
 import { CartModalComponent } from '~/components/CartModal';
-import { Tab, Tabs } from '@mui/material';
+import { useTheme } from '@emotion/react';
 
 function Copyright() {
   return (
@@ -26,7 +25,6 @@ function Copyright() {
     </Typography>
   );
 }
-const theme = createTheme();
 
 export const Home = () => {
   const api = useApi();
@@ -35,6 +33,7 @@ export const Home = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [tabValue, setTabValue] = useState('61ab1ca64a0fef3f27dc663all');
+  const theme = useTheme();
 
   useEffect(() => {
     setData();
@@ -84,20 +83,10 @@ export const Home = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <NavBarComponent toggleCart={toggleCart} />
-      <Tabs
-        indicatorColor='secondary'
-        textColor='inherit'
-        variant='scrollable'
-        value={tabValue}
-        onChange={handleChange}
-      >
-        <Tab value='61ab1ca64a0fef3f27dc663all' label='All Products' />
-        {categories.map((element: Category) => (
-          <Tab key={element.id} value={element.id} label={element.name} />
-        ))}
-      </Tabs>
+      <NavBarComponent
+        props={{ children: <></> }}
+        navProps={{ handleChange, categories, toggleCart, tabValue }}
+      />
       <main>
         <Container sx={{ py: 8 }} maxWidth='md'>
           <Grid container spacing={4}>
