@@ -2,9 +2,9 @@ import { Category } from './Category';
 import { CreatedBy } from './CreatedBy';
 
 export type Product = {
-  _id: string;
+  id: string;
   category: Category;
-  createdAt: Date;
+  createdAt: string;
   createdBy: CreatedBy;
   description: string;
   image: string;

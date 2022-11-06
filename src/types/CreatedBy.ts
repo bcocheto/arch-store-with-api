@@ -1,5 +1,5 @@
 export type CreatedBy = {
-  _id: string;
+  id: string;
   name: string;
   role: string;
 };
