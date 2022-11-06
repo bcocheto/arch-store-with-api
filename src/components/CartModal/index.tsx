@@ -50,6 +50,7 @@ export const CartModalComponent = ({ isOpen, toggleCart, products }: Props) => {
           Cart items
         </Typography>
         <Box
+          flex={1}
           sx={{
             p: '10px',
             display: 'flex',
