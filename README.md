@@ -1,12 +1,12 @@
 <h1 align="center">
 <br>
-  <img alt="Make-up Logo" src="https://github.com/lucasdafonsecadepaula/Star-Wiki/blob/main/public/favicon-192x192.png" />
+  <img alt="Make-up Logo" src="https://github.com/bcocheto/arch-store-with-api/img.png" />
   <br>
   <br>
   ArcH-Store - Desafio ArcH
   <br>
   <br>
-  <a target="_blank" href="https://smart-nx-desafio.vercel.app/">https://smart-nx-desafio.vercel.app/</a>
+  <a target="_blank" href="https://arch-store-with-api-r11l-deod2xlzy-bcocheto.vercel.app/">https://arch-store-with-api-r11l-deod2xlzy-bcocheto.vercel.app/</a>
 </h1>
 
 ---
@@ -27,7 +27,7 @@ Temos três maneiras de verificar o resultado:
 
 **1° Acessando o link: l1nq.com/voKsN**
 
-**2° Acessando o link: **
+**2° Acessando o link: https://arch-store-with-api-r11l-deod2xlzy-bcocheto.vercel.app/**
 
 **2° Clonando o repositório do github:**
 
