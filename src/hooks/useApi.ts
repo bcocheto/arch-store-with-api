@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import storageItems from '~/data/items.json';
 import { Product } from '~/types/Product';
@@ -45,23 +45,29 @@ export const useApi = () => {
     }
   }, [path]);
 
-  const deleteItem = (itemId: string) => () => {
-    const newData = data.filter((item) => item.id !== itemId);
-    setData([...newData]);
-  };
+  const deleteItem = useCallback(
+    (itemId: string) => () => {
+      const newData = data.filter((item) => item.id !== itemId);
+      setData([...newData]);
+    },
+    [data],
+  );
 
-  const editItem = (newItem: Product) => {
-    const newData = data.map((item) => {
-      if (item.id === newItem.id) {
-        return {
-          ...item,
-          ...newItem,
-        };
-      }
-      return item;
-    });
-    setData(newData);
-  };
+  const editItem = useCallback(
+    (newItem: Product) => {
+      const newData = data.map((item) => {
+        if (item.id === newItem.id) {
+          return {
+            ...item,
+            ...newItem,
+          };
+        }
+        return item;
+      });
+      setData(newData);
+    },
+    [data],
+  );
 
   return { data, isLoading, categories, deleteItem, editItem };
 };

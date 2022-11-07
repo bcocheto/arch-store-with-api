@@ -83,8 +83,8 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
 
   return (
     <ModalComponent open={isOpen} toggleModal={toggleModal} title='New item'>
-      <Container onSubmit={handleSubmit} component='main' maxWidth='xl' sx={{ mb: 4 }}>
-        <Box>
+      <Container component='main' maxWidth='xl' sx={{ mb: 4 }}>
+        <form onSubmit={handleSubmit}>
           <Box>
             <TextField
               required
@@ -94,6 +94,7 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
               type='text'
               variant='standard'
               value={data.title}
+              error={data.title ? true : false}
               onChange={(e) => handle(e)}
               sx={{ m: 2 }}
             />
@@ -104,6 +105,7 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
               label='Description'
               type='text'
               variant='standard'
+              error={!!data.description}
               value={data.description}
               onChange={(e) => handle(e)}
               sx={{ m: 2 }}
@@ -118,6 +120,7 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
               type='text'
               variant='standard'
               value={data.slug}
+              error={!!data.slug}
               onChange={(e) => handle(e)}
               sx={{ m: 2 }}
             />
@@ -129,6 +132,7 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
               type='number'
               onChange={(e) => handle(e)}
               value={data.price}
+              error={!!data.price}
               variant='standard'
               sx={{ m: 2 }}
             />
@@ -142,6 +146,7 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
               type='url'
               fullWidth
               variant='standard'
+              error={!!data.image}
               value={data.image}
               onChange={(e) => handle(e)}
               sx={{ m: 2 }}
@@ -155,6 +160,7 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
                 labelId='category'
                 id='category'
                 value={data.category.id}
+                error={!!data.category.id}
                 label='Category'
                 onChange={handleChangeCategory}
               >
@@ -166,24 +172,24 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
               </Select>
             </FormControl>
           </Box>
-        </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Button sx={{ m: 2 }} type='submit' variant='contained' color='success'>
+              Confirm
+            </Button>
+            <Button
+              sx={{ m: 2 }}
+              variant='contained'
+              color='error'
+              onClick={() => {
+                toggleModal();
+                clearData();
+              }}
+            >
+              Cancel
+            </Button>
+          </Box>
+        </form>
       </Container>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button sx={{ m: 2 }} variant='contained' color='success' onClick={handleSubmit}>
-          Confirm
-        </Button>
-        <Button
-          sx={{ m: 2 }}
-          variant='contained'
-          color='error'
-          onClick={() => {
-            toggleModal();
-            clearData();
-          }}
-        >
-          Cancel
-        </Button>
-      </Box>
     </ModalComponent>
   );
 };
