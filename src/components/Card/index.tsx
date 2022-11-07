@@ -1,7 +1,6 @@
-import { Box, ButtonGroup, Container, IconButton, Input, Menu, MenuItem } from '@mui/material';
+import { Box, ButtonGroup, Menu, MenuItem, TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
@@ -17,7 +16,6 @@ import { CardWrapper } from './style';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { CardModalComponent } from './Modal';
 interface CardProps {
   product: Product;
 }
@@ -25,7 +23,6 @@ interface CardProps {
 const ITEM_HEIGHT = 48;
 
 export const CardComponent = ({ product }: CardProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const cart = useContext(CartContext);
   const quantity = cart.getItemQuantity(product.id);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -39,14 +36,10 @@ export const CardComponent = ({ product }: CardProps) => {
     setAnchorEl(null);
   };
 
-  const toggleModal = () => {
-    setIsModalOpen((prev) => !prev);
-  };
-
   return (
-    <Grid item md={6}>
+    <Grid item md={5}>
       <CardWrapper>
-        <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <Card sx={{ height: '600px', display: 'flex', flexDirection: 'column', width: '350px' }}>
           <div style={{ position: 'absolute' }}>
             <Button
               aria-label='more'
@@ -74,7 +67,7 @@ export const CardComponent = ({ product }: CardProps) => {
                 },
               }}
             >
-              <MenuItem onClick={toggleModal}>
+              <MenuItem>
                 <Box
                   sx={{
                     display: 'flex',
@@ -106,47 +99,73 @@ export const CardComponent = ({ product }: CardProps) => {
             component='img'
             sx={{
               objectFit: 'fill',
-              maxHeight: '350px',
+              height: '350px',
             }}
             image={product.image}
             alt={product.slug}
           />
-          <CardContent sx={{ flexGrow: 1 }}>
+          <CardContent>
             <Typography noWrap gutterBottom variant='h5' component='h2'>
               {product.title}
             </Typography>
             <Typography>{product.description ? product.description : 'Sem descrição'}</Typography>
             <Typography>{formatPrice(product.price)}</Typography>
           </CardContent>
-          <CardActions>
-            <Container>
-              <ButtonGroup aria-label='text button group' size='small'>
-                <IconButton onClick={() => cart.increaseItem(product.id)}>
-                  <AddCircleOutlineIcon />
-                </IconButton>
-                <Input size='small' value={quantity} style={{ width: '20px' }} />
-                <IconButton onClick={() => cart.decreaseItem(product.id)}>
-                  <RemoveCircleOutlineIcon />
-                </IconButton>
-              </ButtonGroup>
-            </Container>
-            {quantity > 0 && (
-              <Container>
-                <Button
-                  variant='contained'
-                  color='error'
-                  size='small'
-                  endIcon={<RemoveShoppingCartIcon />}
-                  onClick={() => cart.removeItem(product.id)}
-                >
-                  Remove
-                </Button>
-              </Container>
-            )}
-          </CardActions>
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <ButtonGroup aria-label='text button group' size='large'>
+              <Button
+                variant='contained'
+                color='info'
+                startIcon={<AddCircleOutlineIcon />}
+                onClick={() => cart.increaseItem(product.id)}
+              ></Button>
+              <Box sx={{ width: '50px', display: 'flex', justifyContent: 'center' }}>
+                <TextField
+                  disabled
+                  variant='standard'
+                  size='medium'
+                  value={quantity}
+                  margin='dense'
+                  sx={{ input: { textAlign: 'center' } }}
+                />
+              </Box>
+              <Button
+                variant='contained'
+                color='info'
+                endIcon={<RemoveCircleOutlineIcon />}
+                onClick={() => cart.decreaseItem(product.id)}
+              ></Button>
+            </ButtonGroup>
+          </Box>
+          {quantity > 0 && (
+            <Box
+              mt={2}
+              mb={2}
+              sx={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <Button
+                variant='contained'
+                color='error'
+                size='small'
+                endIcon={<RemoveShoppingCartIcon />}
+                onClick={() => cart.removeItem(product.id)}
+              >
+                Remove
+              </Button>
+            </Box>
+          )}
         </Card>
       </CardWrapper>
-      <CardModalComponent isModalOpen={isModalOpen} toggleModal={toggleModal} />
     </Grid>
   );
 };

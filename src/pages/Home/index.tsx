@@ -12,6 +12,8 @@ import { Category } from '~/types/Category';
 import { NavBarComponent } from '~/components/NavBar';
 import { CartModalComponent } from '~/components/CartModal';
 import { useTheme } from '@emotion/react';
+import { NewButtonComponent } from '~/components/NewButton';
+import { CreateModalComponent } from '~/components/NewButton/Modal';
 
 function Copyright() {
   return (
@@ -28,6 +30,7 @@ function Copyright() {
 
 export const Home = () => {
   const api = useApi();
+  const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -53,6 +56,8 @@ export const Home = () => {
 
   const toggleCart = () => setIsOpen((prev) => !prev);
 
+  const toggleCreateModal = () => setIsOpenModalCreate((prev) => !prev);
+
   const createCategories = async () => {
     const categoriesArr = await api.getCategories();
 
@@ -73,7 +78,7 @@ export const Home = () => {
     setTabValue(value);
     if (value !== '61ab1ca64a0fef3f27dc663all') {
       const category = categories.find((item) => item.id === value);
-      const newProducts = products?.filter((item) => item.category.id === category?.id);
+      const newProducts = products?.filter((item) => item.category?.id === category?.id);
       console.table(newProducts);
       setFilteredProducts(newProducts);
       return;
@@ -99,11 +104,18 @@ export const Home = () => {
             )}
           </Grid>
         </Container>
+        <NewButtonComponent toggleModalCreate={toggleCreateModal} />
       </main>
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component='footer'>
+        <CartModalComponent isOpen={isOpen} toggleCart={toggleCart} products={products} />
+        <CreateModalComponent
+          isOpen={isOpenModalCreate}
+          toggleModal={toggleCreateModal}
+          categories={categories}
+          products={products}
+        />
         <Copyright />
       </Box>
-      <CartModalComponent isOpen={isOpen} toggleCart={toggleCart} products={products} />
     </ThemeProvider>
   );
 };
