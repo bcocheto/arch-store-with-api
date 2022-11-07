@@ -1,6 +1,6 @@
 <h1 align="center">
 <br>
-  <img alt="Make-up Logo" src="https://github.com/bcocheto/arch-store-with-api/img.png" />
+  <img alt="Make-up Logo" src="https://github.com/bcocheto/arch-store-with-api/blob/main/public/img.png" />
   <br>
   <br>
   ArcH-Store - Desafio ArcH
