@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import { ModalComponent } from '~/components/Modal';
@@ -10,55 +10,20 @@ import Button from '@mui/material/Button';
 
 interface ModalProps {
   isOpen: boolean;
+  product: Product;
   categories: Category[];
-  products: Product[];
+  editItem: (newItem: Product) => void;
   toggleModal: () => void;
 }
 
-export const CreateModalComponent = ({ isOpen, categories, products, toggleModal }: ModalProps) => {
-  const [data, setData] = useState<Product>({
-    id: '',
-    category: {
-      id: '',
-      name: '',
-      slug: '',
-    },
-    description: '',
-    image: '',
-    price: 0,
-    slug: '',
-    title: '',
-  });
-
-  useEffect(() => {
-    const makeid = () => {
-      let result = '';
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      const charactersLength = characters.length;
-      for (let i = 0; i < 20; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-      return setData({ ...data, id: result });
-    };
-    makeid();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const clearData = () => {
-    setData({
-      id: '',
-      category: {
-        id: '',
-        name: '',
-        slug: '',
-      },
-      description: '',
-      image: '',
-      price: 0,
-      slug: '',
-      title: '',
-    });
-  };
+export const EditModalComponent = ({
+  isOpen,
+  toggleModal,
+  product,
+  editItem,
+  categories,
+}: ModalProps) => {
+  const [data, setData] = useState<Product>(product);
 
   const handleChangeCategory = (event: SelectChangeEvent) => {
     const category = categories.filter((element) => element.id === event.target.value);
@@ -76,9 +41,8 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    products.unshift(data);
+    editItem(data);
     toggleModal();
-    clearData();
   };
 
   return (
@@ -87,7 +51,6 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
         <Box>
           <Box>
             <TextField
-              required
               id='title'
               name='title'
               label='Name'
@@ -98,7 +61,6 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
               sx={{ m: 2 }}
             />
             <TextField
-              required
               id='description'
               name='description'
               label='Description'
@@ -111,7 +73,6 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
           </Box>
           <Box>
             <TextField
-              required
               id='slug'
               name='slug'
               label='Slug'
@@ -122,7 +83,6 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
               sx={{ m: 2 }}
             />
             <TextField
-              required
               id='price'
               name='price'
               label='Price'
@@ -135,7 +95,6 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
           </Box>
           <Box>
             <TextField
-              required
               id='image'
               name='image'
               label='Image url'
@@ -151,7 +110,6 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
             <FormControl fullWidth id='category' sx={{ m: 2 }}>
               <InputLabel id='category'>Category</InputLabel>
               <Select
-                required
                 labelId='category'
                 id='category'
                 value={data.category.id}
@@ -178,7 +136,6 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
           color='error'
           onClick={() => {
             toggleModal();
-            clearData();
           }}
         >
           Cancel

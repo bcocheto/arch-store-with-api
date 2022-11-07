@@ -1,18 +1,26 @@
-import { Route } from 'react-router';
-import { Routes, BrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { CartProvider } from './contexts/CartContext';
 import { AppThemeProvider } from './contexts/ThemeContext';
 import { Home } from './pages/Home';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+    errorElement: <h1>TESTANDO ERRO</h1>,
+  },
+  {
+    path: '/:category',
+    element: <Home />,
+    errorElement: <h1>TESTANDO ERRO</h1>,
+  },
+]);
 
 function App() {
   return (
     <AppThemeProvider>
       <CartProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home />} />
-          </Routes>
-        </BrowserRouter>
+        <RouterProvider router={router} />
       </CartProvider>
     </AppThemeProvider>
   );

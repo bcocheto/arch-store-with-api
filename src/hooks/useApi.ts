@@ -1,34 +1,67 @@
-import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import storageItems from '~/data/items.json';
+import { Product } from '~/types/Product';
 
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API,
-});
+const MOCK_LOADING_TIME_IN_MS = 500;
 
-export const useApi = () => ({
-  getProducts: async () => {
-    return storageItems;
-    // try {
-    //   const {
-    //     data: { data },
-    //   } = await api.get('/products');
-    //   console.log(data);
-    //   return data;
-    // } catch (error) {
-    //   console.log('Erro ao solicitar dados: ', error);
-    // }
-  },
-  getCategories: async () => {
-    const categories = storageItems.map((item) => item.category);
-    return categories;
-    // try {
-    //   const {
-    //     data: { data },
-    //   } = await api.get('/products');
-    //   const categories = data.map((item: Product) => item.category);
-    //   return categories;
-    // } catch (error) {
-    //   console.log('Erro ao solicitar dados: ', error);
-    // }
-  },
-});
+const createCategories = () => {
+  const categories = storageItems.map((item) => item.category);
+  const uniqueIds: string[] = [];
+  const uniqueCategories = categories.filter((element) => {
+    const isDuplicate = uniqueIds.includes(element.id);
+    if (!isDuplicate) {
+      uniqueIds.push(element.id);
+      return true;
+    }
+    return false;
+  });
+  return uniqueCategories;
+};
+
+export const useApi = () => {
+  const location = useLocation();
+  const path = location.pathname.replace('/', '');
+  const [data, setData] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const categories = createCategories();
+
+  useEffect(() => {
+    console.log('path', path);
+    if (path === '') {
+      setIsLoading(true);
+      setTimeout(() => {
+        setData(storageItems);
+        setIsLoading(false);
+      }, MOCK_LOADING_TIME_IN_MS);
+    }
+    if (path !== '') {
+      setIsLoading(true);
+      setTimeout(() => {
+        const storageItemsFiltered = storageItems.filter((item) => item.category.slug === path);
+        setData(storageItemsFiltered);
+        setIsLoading(false);
+      }, MOCK_LOADING_TIME_IN_MS);
+    }
+  }, [path]);
+
+  const deleteItem = (itemId: string) => () => {
+    const newData = data.filter((item) => item.id !== itemId);
+    setData([...newData]);
+  };
+
+  const editItem = (newItem: Product) => {
+    const newData = data.map((item) => {
+      if (item.id === newItem.id) {
+        return {
+          ...item,
+          ...newItem,
+        };
+      }
+      return item;
+    });
+    setData(newData);
+  };
+
+  return { data, isLoading, categories, deleteItem, editItem };
+};

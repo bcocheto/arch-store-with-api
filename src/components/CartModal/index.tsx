@@ -9,8 +9,8 @@ import { CartItemComponent } from '../CartItem';
 import { formatPrice } from '~/utility/formatPrice';
 import storeItems from '~/data/items.json';
 import { useContext } from 'react';
-import { Product } from '~/types/Product';
 import { CartItem } from '~/types/CartItem';
+import { Product } from '~/types/Product';
 
 const drawerBleeding = 56;
 

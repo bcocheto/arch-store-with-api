@@ -13,20 +13,28 @@ import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { CartContext } from '~/contexts/CartContext';
 import { useContext, useState } from 'react';
 import { CardWrapper } from './style';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { EditModalComponent } from './Modal';
+import { Category } from '~/types/Category';
+
 interface CardProps {
   product: Product;
+  categories: Category[];
+  editItem: (newItem: Product) => void;
+  deleteItem: (itemId: string) => () => void;
 }
 
 const ITEM_HEIGHT = 48;
 
-export const CardComponent = ({ product }: CardProps) => {
+export const CardComponent = ({ product, categories, deleteItem, editItem }: CardProps) => {
   const cart = useContext(CartContext);
   const quantity = cart.getItemQuantity(product.id);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => setIsOpen((prev) => !prev);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -40,7 +48,7 @@ export const CardComponent = ({ product }: CardProps) => {
     <Grid item md={5}>
       <CardWrapper>
         <Card sx={{ height: '600px', display: 'flex', flexDirection: 'column', width: '350px' }}>
-          <div style={{ position: 'absolute' }}>
+          <div style={{ position: 'absolute', margin: '10px' }}>
             <Button
               aria-label='more'
               id='long-button'
@@ -50,8 +58,10 @@ export const CardComponent = ({ product }: CardProps) => {
               variant='contained'
               color='info'
               onClick={handleClick}
-              startIcon={<SettingsOutlinedIcon />}
-            ></Button>
+              sx={{ boxShadow: ' 2px 2px 5px 0px rgba(0,0,0,0.75)' }}
+            >
+              Settings
+            </Button>
             <Menu
               id='long-menu'
               MenuListProps={{
@@ -68,30 +78,19 @@ export const CardComponent = ({ product }: CardProps) => {
               }}
             >
               <MenuItem>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-around',
-                    width: '100%',
-                  }}
-                >
-                  <Typography>Edit </Typography>
-                  <EditIcon />
-                </Box>
+                <Button variant='text' color='info' endIcon={<EditIcon />} onClick={toggleModal}>
+                  Edit
+                </Button>
               </MenuItem>
               <MenuItem>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-around',
-                    width: '100%',
-                  }}
+                <Button
+                  variant='text'
+                  color='error'
+                  endIcon={<DeleteForeverIcon />}
+                  onClick={deleteItem(product.id)}
                 >
-                  <Typography>Delete </Typography>
-                  <DeleteForeverIcon />
-                </Box>
+                  Delete
+                </Button>
               </MenuItem>
             </Menu>
           </div>
@@ -166,6 +165,13 @@ export const CardComponent = ({ product }: CardProps) => {
           )}
         </Card>
       </CardWrapper>
+      <EditModalComponent
+        isOpen={isOpen}
+        product={product}
+        editItem={editItem}
+        toggleModal={toggleModal}
+        categories={categories}
+      />
     </Grid>
   );
 };

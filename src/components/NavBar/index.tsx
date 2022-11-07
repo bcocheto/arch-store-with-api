@@ -140,9 +140,9 @@ export const NavBarComponent = ({ props, navProps }: { props: Props; navProps: N
               value={navProps.tabValue}
               onChange={navProps.handleChange}
             >
-              <Tab value='61ab1ca64a0fef3f27dc663all' label='All Products' />
+              <Tab value='all' label='All Products' />
               {navProps.categories.map((element: Category) => (
-                <Tab key={element.id} value={element.id} label={element.name} />
+                <Tab key={element.id} value={element.slug} label={element.name} />
               ))}
             </Tabs>
           </Box>
