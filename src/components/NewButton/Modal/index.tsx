@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { ModalComponent } from '~/components/Modal';
 import { Category } from '~/types/Category';
@@ -31,6 +29,22 @@ export const CreateModalComponent = ({ isOpen, toggleModal, categories, products
     slug: '',
     title: '',
   });
+
+  const clearData = () => {
+    setData({
+      id: '',
+      category: {
+        id: '',
+        name: '',
+        slug: '',
+      },
+      description: '',
+      image: '',
+      price: 0,
+      slug: '',
+      title: '',
+    });
+  };
 
   const makeid = () => {
     let result = '';
@@ -62,112 +76,95 @@ export const CreateModalComponent = ({ isOpen, toggleModal, categories, products
     products.unshift(data);
     console.log(data);
     toggleModal();
-    setData({
-      id: '',
-      category: {
-        id: '',
-        name: '',
-        slug: '',
-      },
-      description: '',
-      image: '',
-      price: 0,
-      slug: '',
-      title: '',
-    });
+    clearData();
   };
 
   return (
     <ModalComponent open={isOpen} toggleModal={toggleModal} title='New item'>
-      <Container onSubmit={handleSubmit} component='main' maxWidth='sm' sx={{ mb: 4 }}>
-        <Paper variant='outlined' sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
+      <Container onSubmit={handleSubmit} component='main' maxWidth='xl' sx={{ mb: 4 }}>
+        <Box>
+          <Box>
+            <TextField
+              required
+              id='title'
+              name='title'
+              label='Name'
+              type='text'
+              variant='standard'
+              value={data.title}
+              onChange={(e) => handle(e)}
+              sx={{ m: 2 }}
+            />
+            <TextField
+              required
+              id='description'
+              name='description'
+              label='Description'
+              type='text'
+              variant='standard'
+              value={data.description}
+              onChange={(e) => handle(e)}
+              sx={{ m: 2 }}
+            />
+          </Box>
+          <Box>
+            <TextField
+              required
+              id='slug'
+              name='slug'
+              label='Slug'
+              type='text'
+              variant='standard'
+              value={data.slug}
+              onChange={(e) => handle(e)}
+              sx={{ m: 2 }}
+            />
+            <TextField
+              required
+              id='price'
+              name='price'
+              label='Price'
+              type='number'
+              onChange={(e) => handle(e)}
+              value={data.price}
+              variant='standard'
+              sx={{ m: 2 }}
+            />
+          </Box>
+          <Box>
+            <TextField
+              required
+              id='image'
+              name='image'
+              label='Image url'
+              type='url'
+              fullWidth
+              variant='standard'
+              value={data.image}
+              onChange={(e) => handle(e)}
+              sx={{ m: 2 }}
+            />
+          </Box>
+          <Box>
+            <FormControl fullWidth id='category' sx={{ m: 2 }}>
+              <InputLabel id='category'>Category</InputLabel>
+              <Select
                 required
-                id='title'
-                name='title'
-                label='Name'
-                type='text'
-                fullWidth
-                variant='standard'
-                value={data.title}
-                onChange={(e) => handle(e)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id='description'
-                name='description'
-                label='Description'
-                fullWidth
-                type='text'
-                variant='standard'
-                value={data.description}
-                onChange={(e) => handle(e)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id='slug'
-                name='slug'
-                label='Slug'
-                type='text'
-                fullWidth
-                variant='standard'
-                value={data.slug}
-                onChange={(e) => handle(e)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                required
-                id='price'
-                name='price'
-                label='Price'
-                type='number'
-                fullWidth
-                onChange={(e) => handle(e)}
-                value={data.price}
-                variant='standard'
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                required
-                id='image'
-                name='image'
-                label='Image url'
-                type='url'
-                fullWidth
-                variant='standard'
-                value={data.image}
-                onChange={(e) => handle(e)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FormControl fullWidth id='category'>
-                <InputLabel id='category'>Category</InputLabel>
-                <Select
-                  required
-                  labelId='category'
-                  id='category'
-                  value={data.category.id}
-                  label='Category'
-                  onChange={handleChangeCategory}
-                >
-                  {categories?.map((category: Category) => (
-                    <MenuItem key={category.id} value={category.id}>
-                      {category.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-          </Grid>
-        </Paper>
+                labelId='category'
+                id='category'
+                value={data.category.id}
+                label='Category'
+                onChange={handleChangeCategory}
+              >
+                {categories?.map((category: Category) => (
+                  <MenuItem key={category.id} value={category.id}>
+                    {category.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Box>
+        </Box>
       </Container>
       <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
         <Button sx={{ m: 2 }} variant='contained' color='success' onClick={handleSubmit}>
@@ -179,19 +176,7 @@ export const CreateModalComponent = ({ isOpen, toggleModal, categories, products
           color='error'
           onClick={() => {
             toggleModal();
-            setData({
-              id: '',
-              category: {
-                id: '',
-                name: '',
-                slug: '',
-              },
-              description: '',
-              image: '',
-              price: 0,
-              slug: '',
-              title: '',
-            });
+            clearData();
           }}
         >
           Cancel
