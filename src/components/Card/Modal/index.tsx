@@ -36,7 +36,6 @@ export const EditModalComponent = ({
     const newData: any = { ...data };
     newData[e.target.name] = e.target.value;
     setData(newData);
-    console.log(newData);
   };
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
@@ -47,7 +46,7 @@ export const EditModalComponent = ({
 
   return (
     <ModalComponent open={isOpen} toggleModal={toggleModal} title='New item'>
-      <Container onSubmit={handleSubmit} component='main' maxWidth='xl' sx={{ mb: 4 }}>
+      <Container component='main' maxWidth='xl' sx={{ mb: 4 }}>
         <form onSubmit={handleSubmit}>
           <Box>
             <TextField
@@ -137,17 +136,16 @@ export const EditModalComponent = ({
             </FormControl>
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button sx={{ m: 2 }} type='submit' variant='contained' color='success'>
-              Confirm
-            </Button>
             <Button
               sx={{ m: 2 }}
+              type='button'
               variant='contained'
-              color='error'
-              onClick={() => {
-                toggleModal();
-              }}
+              color='success'
+              onClick={handleSubmit}
             >
+              Confirm
+            </Button>
+            <Button sx={{ m: 2 }} variant='contained' color='error' onClick={toggleModal}>
               Cancel
             </Button>
           </Box>

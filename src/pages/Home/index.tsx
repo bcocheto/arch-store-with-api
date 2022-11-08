@@ -16,7 +16,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 export const Home = () => {
   const location = useLocation();
-  const { data: products, categories, deleteItem, editItem } = useApi();
+  const { data: products, categories, deleteItem, editItem, addItem } = useApi();
   const [isOpen, setIsOpen] = useState(false);
   const [tabValue, setTabValue] = useState('all');
   const theme = useTheme();
@@ -70,7 +70,7 @@ export const Home = () => {
             )}
           </Grid>
         </Container>
-        <NewButtonComponent categories={categories} products={products} />
+        <NewButtonComponent categories={categories} addItem={addItem} />
       </main>
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component='footer'>
         <CartModalComponent isOpen={isOpen} toggleCart={toggleCart} products={products} />

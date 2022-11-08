@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import { ModalComponent } from '~/components/Modal';
@@ -11,11 +11,11 @@ import Button from '@mui/material/Button';
 interface ModalProps {
   isOpen: boolean;
   categories: Category[];
-  products: Product[];
   toggleModal: () => void;
+  addItem: (item: Product) => void;
 }
 
-export const CreateModalComponent = ({ isOpen, categories, products, toggleModal }: ModalProps) => {
+export const CreateModalComponent = ({ isOpen, categories, addItem, toggleModal }: ModalProps) => {
   const [data, setData] = useState<Product>({
     id: '',
     category: {
@@ -30,19 +30,15 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
     title: '',
   });
 
-  useEffect(() => {
-    const makeid = () => {
-      let result = '';
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      const charactersLength = characters.length;
-      for (let i = 0; i < 20; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-      return setData({ ...data, id: result });
-    };
-    makeid();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const makeid = () => {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < 20; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return setData({ ...data, id: result });
+  };
 
   const clearData = () => {
     setData({
@@ -61,6 +57,7 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
   };
 
   const handleChangeCategory = (event: SelectChangeEvent) => {
+    makeid();
     const category = categories.filter((element) => element.id === event.target.value);
     const newData = { ...data };
     newData['category'] = category[0];
@@ -71,15 +68,16 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
     const newData: any = { ...data };
     newData[e.target.name] = e.target.value;
     setData(newData);
-    console.log(newData);
   };
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    products.unshift(data);
+    addItem(data);
     toggleModal();
     clearData();
   };
+
+  console.log('add', addItem);
 
   return (
     <ModalComponent open={isOpen} toggleModal={toggleModal} title='New item'>
@@ -94,7 +92,7 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
               type='text'
               variant='standard'
               value={data.title}
-              error={data.title ? true : false}
+              error={!!data.title}
               onChange={(e) => handle(e)}
               sx={{ m: 2 }}
             />
@@ -173,18 +171,16 @@ export const CreateModalComponent = ({ isOpen, categories, products, toggleModal
             </FormControl>
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button sx={{ m: 2 }} type='submit' variant='contained' color='success'>
-              Confirm
-            </Button>
             <Button
               sx={{ m: 2 }}
+              type='button'
               variant='contained'
-              color='error'
-              onClick={() => {
-                toggleModal();
-                clearData();
-              }}
+              color='success'
+              onClick={handleSubmit}
             >
+              Confirm
+            </Button>
+            <Button sx={{ m: 2 }} variant='contained' color='error' onClick={toggleModal}>
               Cancel
             </Button>
           </Box>

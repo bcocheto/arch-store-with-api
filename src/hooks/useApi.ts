@@ -53,6 +53,10 @@ export const useApi = () => {
     [data],
   );
 
+  const addItem = useCallback((item: Product) => {
+    setData((prev) => [...prev, item]);
+  }, []);
+
   const editItem = useCallback(
     (newItem: Product) => {
       const newData = data.map((item) => {
@@ -69,5 +73,5 @@ export const useApi = () => {
     [data],
   );
 
-  return { data, isLoading, categories, deleteItem, editItem };
+  return { data, isLoading, categories, deleteItem, editItem, addItem };
 };

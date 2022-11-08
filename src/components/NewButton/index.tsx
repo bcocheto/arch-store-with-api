@@ -8,10 +8,10 @@ import { Product } from '~/types/Product';
 
 interface ButtonProps {
   categories: Category[];
-  products: Product[];
+  addItem: (item: Product) => void;
 }
 
-export const NewButtonComponent = ({ categories, products }: ButtonProps) => {
+export const NewButtonComponent = ({ categories, addItem }: ButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => setIsOpen((prev) => !prev);
@@ -26,7 +26,7 @@ export const NewButtonComponent = ({ categories, products }: ButtonProps) => {
       <CreateModalComponent
         isOpen={isOpen}
         categories={categories}
-        products={products}
+        addItem={addItem}
         toggleModal={toggleModal}
       />
     </>
