@@ -3,10 +3,10 @@ import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import { ModalComponent } from '~/components/Modal';
 import { Category } from '~/types/Category';
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { FormControl, Grid, InputLabel, NativeSelect } from '@mui/material';
 import { Product } from '~/types/Product';
-import { Box } from '@mui/system';
 import Button from '@mui/material/Button';
+import { useForm } from 'react-hook-form';
 
 interface ModalProps {
   isOpen: boolean;
@@ -23,132 +23,111 @@ export const EditModalComponent = ({
   editItem,
   categories,
 }: ModalProps) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Product>();
   const [data, setData] = useState<Product>(product);
 
-  const handleChangeCategory = (event: SelectChangeEvent) => {
+  const handleChangeCategory = (event: any) => {
     const category = categories.filter((element) => element.id === event.target.value);
     const newData = { ...data };
     newData['category'] = category[0];
     setData(newData);
+    console.log('data', data);
   };
 
-  const handle = (e: any) => {
-    const newData: any = { ...data };
-    newData[e.target.name] = e.target.value;
-    setData(newData);
-  };
-
-  const handleSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    editItem(data);
+  const onSubmit = (data: any) => {
+    console.log('data', data);
+    const newItem: Product = {
+      ...product,
+      ...data,
+    };
+    editItem(newItem);
     toggleModal();
   };
 
   return (
     <ModalComponent open={isOpen} toggleModal={toggleModal} title='New item'>
-      <Container component='main' maxWidth='xl' sx={{ mb: 4 }}>
-        <form onSubmit={handleSubmit}>
-          <Box>
-            <TextField
-              required
-              id='title'
-              name='title'
-              label='Name'
-              type='text'
-              variant='standard'
-              value={data.title}
-              error={!!data.title}
-              onChange={(e) => handle(e)}
-              sx={{ m: 2 }}
-            />
-            <TextField
-              required
-              id='description'
-              name='description'
-              label='Description'
-              type='text'
-              variant='standard'
-              error={!!data.description}
-              value={data.description}
-              onChange={(e) => handle(e)}
-              sx={{ m: 2 }}
-            />
-          </Box>
-          <Box>
-            <TextField
-              required
-              id='slug'
-              name='slug'
-              label='Slug'
-              type='text'
-              variant='standard'
-              value={data.slug}
-              error={!!data.slug}
-              onChange={(e) => handle(e)}
-              sx={{ m: 2 }}
-            />
-            <TextField
-              required
-              id='price'
-              name='price'
-              label='Price'
-              type='number'
-              onChange={(e) => handle(e)}
-              value={data.price}
-              error={!!data.price}
-              variant='standard'
-              sx={{ m: 2 }}
-            />
-          </Box>
-          <Box>
-            <TextField
-              required
-              id='image'
-              name='image'
-              label='Image url'
-              type='url'
-              fullWidth
-              variant='standard'
-              error={!!data.image}
-              value={data.image}
-              onChange={(e) => handle(e)}
-              sx={{ m: 2 }}
-            />
-          </Box>
-          <Box>
-            <FormControl fullWidth id='category' sx={{ m: 2 }}>
-              <InputLabel id='category'>Category</InputLabel>
-              <Select
+      <Container component='main' maxWidth='xl' sx={{ mb: 4, mt: 4 }}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
                 required
-                labelId='category'
-                id='category'
-                value={data.category.id}
-                error={!!data.category.id}
-                label='Category'
-                onChange={handleChangeCategory}
-              >
-                {categories?.map((category: Category) => (
-                  <MenuItem key={category.id} value={category.id}>
-                    {category.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button
-              sx={{ m: 2 }}
-              type='button'
-              variant='contained'
-              color='success'
-              onClick={handleSubmit}
-            >
-              Confirm
-            </Button>
-            <Button sx={{ m: 2 }} variant='contained' color='error' onClick={toggleModal}>
-              Cancel
-            </Button>
-          </Box>
+                label='Title'
+                fullWidth
+                id='title'
+                {...register('title', { required: 'Title field is required' })}
+                error={!!errors.title}
+                helperText={errors.title ? errors.title.message : null}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                id='description'
+                label='Description'
+                {...register('description', { required: 'Description field is required' })}
+                error={!!errors.description}
+                helperText={errors.description ? errors.description.message : null}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                id='slug'
+                label='Slug'
+                {...register('slug', { required: 'Slug field is required' })}
+                error={!!errors.slug}
+                helperText={errors.slug ? errors.slug.message : null}
+              />
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <TextField
+                required
+                fullWidth
+                label='Price'
+                type='number'
+                id='price'
+                {...register('price', { required: 'Price field is required' })}
+                error={!!errors.price}
+                helperText={errors.price ? errors.price.message : null}
+              />
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <FormControl fullWidth>
+                <InputLabel variant='standard' htmlFor='uncontrolled-native'>
+                  Category
+                </InputLabel>
+                <NativeSelect defaultValue={product.category} onChange={handleChangeCategory}>
+                  {categories.map((category: Category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </NativeSelect>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <TextField
+                required
+                fullWidth
+                label='Image url'
+                type='url'
+                id='image'
+                {...register('image', { required: 'Image field is required' })}
+                error={!!errors.image}
+                helperText={errors.image ? errors.image.message : null}
+              />
+            </Grid>
+          </Grid>
+          <Button type='submit' fullWidth variant='contained' sx={{ mt: 3, mb: 2 }}>
+            Save
+          </Button>
         </form>
       </Container>
     </ModalComponent>

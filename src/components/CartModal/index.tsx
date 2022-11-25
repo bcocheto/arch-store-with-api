@@ -7,7 +7,6 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { CartContext } from '~/contexts/CartContext';
 import { CartItemComponent } from '../CartItem';
 import { formatPrice } from '~/utility/formatPrice';
-import storeItems from '~/data/items.json';
 import { useContext } from 'react';
 import { CartItem } from '~/types/CartItem';
 import { Product } from '~/types/Product';
@@ -71,7 +70,7 @@ export const CartModalComponent = ({ isOpen, toggleCart, products }: Props) => {
           <Typography fontWeight={800}>Total </Typography>
           {formatPrice(
             cart.cartItems.reduce((total, cartItem) => {
-              const item = storeItems.find((element) => element.id === cartItem.id);
+              const item = products.find((element: { id: string }) => element.id === cartItem.id);
               return total + (item?.price || 0) * cartItem.quantity;
             }, 0),
           )}

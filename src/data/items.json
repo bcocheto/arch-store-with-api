@@ -1,301 +1,290 @@
-[
-  {
-    "id": "61ab420c0f34753bcedfa787",
-    "title": "special cotton shirt for men",
-    "price": 15,
-    "description":"Lorem ipsum dolor sit amet.",
-    "slug": "special-cotton-shirt-for-men",
-    "image": "http://cdn.shopify.com/s/files/1/0388/7425/1308/products/nasa-space-icons-special-t-shirt-for-men-and-women-printrove-397012.jpg?v=1649149540",
-    "category": {
-      "id": "61ab1ca64a0fef3f27dc663f",
-      "name": "men's fashion",
-      "slug": "mens-fashion"
+{
+  "items": [
+    {
+      "id": "61ab42600f34753bcedfa78b",
+      "title": "high quality men distress skinny blue jeans",
+      "price": 90,
+      "image": "https://i.ebayimg.com/images/g/qa0AAOSwDqliU9~V/s-l1600.jpg",
+      "category": {
+        "id": "61ab1ca64a0fef3f27dc663f",
+        "name": "men's fashion",
+        "slug": "mens-fashion"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "slug": "high-quality-men-distress-skinny-blue-jeans"
+    },
+    {
+      "id": "61ab42790f34753bcedfa78f",
+      "title": "cotton o neck mens clothing t shirts",
+      "price": 30,
+      "image": "https://ae01.alicdn.com/kf/HTB1A_ZiKpXXXXXRXpXXq6xXFXXX2/Bonplon-men-s-summer-clothing-o-neck-short-sleeve-T-shirt-slim-100-cotton-casual-male.jpg_.webp",
+      "description": "Lorem ipsum dolor sit amet.",
+      "slug": "cotton-o-neck-mens-clothing-t-shirts",
+      "category": {
+        "id": "61ab1ca64a0fef3f27dc663f",
+        "name": "men's fashion",
+        "slug": "mens-fashion"
+      }
+    },
+    {
+      "id": "61ab42d00f34753bcedfa79e",
+      "title": "cotton pullover embroidery sweatshirt women",
+      "price": 100,
+      "description": "Lorem ipsum dolor sit amet.",
+      "category": {
+        "id": "61ab1ce24a0fef3f27dc6647",
+        "name": "women's fashion",
+        "slug": "womens-fashion"
+      },
+      "image": "https://ae01.alicdn.com/kf/Hffca161fd64349079d88ce35a575393bV/Vintage-Letter-Embroidery-Loose-Sweatshirt-Women-2020-New-Cotton-Long-Sleeve-O-Neck-Oversized-Hoodie-Autumn.jpg_.webp",
+      "slug": "cotton-pullover-embroidery-sweatshirt-women"
+    },
+    {
+      "id": "61ab42e90f34753bcedfa7a2",
+      "title": "breast button belt sur collar winter coat women",
+      "price": 120,
+      "category": {
+        "id": "61ab1ce24a0fef3f27dc6647",
+        "name": "women's fashion",
+        "slug": "womens-fashion"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://m.media-amazon.com/images/I/71toFv2rIuL._AC_UY1000_.jpg",
+      "slug": "breast-button-belt-sur-collar-winter-coat-women"
+    },
+    {
+      "id": "61ab431c0f34753bcedfa7a6",
+      "title": "running sneaker",
+      "price": 200,
+      "category": {
+        "id": "61ab1d0e4a0fef3f27dc664d",
+        "name": "bags & shoes",
+        "slug": "bags-and-shoes"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://www.brooksrunning.com/dw/image/v2/BGPF_PRD/on/demandware.static/-/Sites-brooks-master-catalog/default/dwf5484ed4/original/110369/110369-078-l-ghost-14-mens-cushion-running-shoe.jpg?sw=425&sh=425&sm=fit&sfrm=png&bgcolor=F1F3F6",
+      "slug": "running-sneaker"
+    },
+    {
+      "id": "61ab43350f34753bcedfa7aa",
+      "title": "men casual shoes sports running sneakers",
+      "price": 100,
+      "category": {
+        "id": "61ab1d0e4a0fef3f27dc664d",
+        "name": "bags & shoes",
+        "slug": "bags-and-shoes"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://img.joomcdn.net/26f03b0b01e74c933af18ee4b5f8c0dad887c10e_original.jpeg",
+      "slug": "men-casual-shoes-sports-running-sneakers"
+    },
+    {
+      "id": "61ab434b0f34753bcedfa7ae",
+      "title": "premium leather matt black casual boot",
+      "price": 250,
+      "category": {
+        "id": "61ab1d0e4a0fef3f27dc664d",
+        "name": "bags & shoes",
+        "slug": "bags-and-shoes"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://cdn.shopify.com/s/files/1/0419/1525/products/1024x1024-Men-President-BlackMatte-191107-1.jpg?v=1573146590",
+      "slug": "premium-leather-matt-black-casual-boot"
+    },
+    {
+      "id": "61ab44f40f34753bcedfa819",
+      "title": "waterproof fitness watch",
+      "price": "145",
+      "category": {
+        "id": "61ab1cf84a0fef3f27dc664a",
+        "name": "jewlary & watches",
+        "slug": "jewlary-and-watches"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvF-kd7oNKNJOJ0YeQW30tCAGGR8XCKiZ5JQzp9ApWE6rd1PX1N10iGskWTrfHAdG29nI&usqp=CAU",
+      "slug": "waterproof-fitness-racker-sports-watch"
+    },
+    {
+      "id": "61ab450a0f34753bcedfa81d",
+      "title": "bracelet blood pressure sport fitness smartwatch",
+      "price": 120,
+      "category": {
+        "id": "61ab1cf84a0fef3f27dc664a",
+        "name": "jewlary & watches",
+        "slug": "jewlary-and-watches"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://cf.shopee.com.br/file/d929cabac7a135b12ed3338d63ce0c6b",
+      "slug": "bracelet-blood-pressure-sport-fitness-smartwatch"
+    },
+    {
+      "id": "61ab47110f34753bcedfa83f",
+      "title": "Sceptre LED  curved 2xHDMI display port monitor",
+      "price": 149,
+      "category": {
+        "id": "61ab1d274a0fef3f27dc6650",
+        "name": "computers",
+        "slug": "computers"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://m.media-amazon.com/images/I/412QIfxzozL._AC_SY1000_.jpg",
+      "slug": "sceptre-led-curved-2xhdmi-display-port-monitor"
+    },
+    {
+      "id": "61ab472c0f34753bcedfa843",
+      "title": "ASUS Full HD HDMI Sync Eye Care eSports Gaming Monitor",
+      "price": 159,
+      "category": {
+        "id": "61ab1d274a0fef3f27dc6650",
+        "name": "computers",
+        "slug": "computers"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://m.media-amazon.com/images/I/515dm5sPwVL._AC_SY450_.jpg",
+      "slug": "asus-full-hd-hdmi-sync-eye-care-esports-gaming-monitor"
+    },
+    {
+      "id": "61ab475a0f34753bcedfa847",
+      "title": "iphone 13 pro black color 512gb storage",
+      "price": 999,
+      "category": {
+        "id": "61ab1d3b4a0fef3f27dc6654",
+        "name": "phone & tablets",
+        "slug": "phone-and-tablets"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg",
+      "slug": "iphone-13-pro-black-color-512gb-storage"
+    },
+    {
+      "id": "61ab47c20f34753bcedfa853",
+      "title": "Dual 3G Phone Call Octa Core 10 Inch Android Tablet",
+      "price": 700,
+      "category": {
+        "id": "61ab1d3b4a0fef3f27dc6654",
+        "name": "phone & tablets",
+        "slug": "phone-and-tablets"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://images-americanas.b2w.io/produtos/4392791031/imagens/tablet-android-8-1-4g-64g-de-10-1-polegadas-quad-core-wifi-bluetoothv4-0-laptop-dual-sim-prata-preto-ouro-rosa-azul-preto/4392791031_1_large.jpg",
+      "slug": "dual-3g-phone-call-octa-core-10-inch-android-tablet"
+    },
+    {
+      "id": "61ab47e70f34753bcedfa857",
+      "title": "RGB Gaming Chair with Lights and Speakers",
+      "price": 600,
+      "category": {
+        "id": "61ab1d594a0fef3f27dc665a",
+        "name": "home & furniture",
+        "slug": "home-and-furniture"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://i5.walmartimages.com/asr/caeed419-10f5-4876-97a2-daf64d608e91.0b040775c8aacc244ce78707080a2614.jpeg",
+      "slug": "rgb-gaming-chair-with-lights-and-speakers"
+    },
+    {
+      "id": "61ab47fd0f34753bcedfa85b",
+      "title": "Bed Storage Leather Italian Furniture Sofa Luxury",
+      "price": 750,
+      "category": {
+        "id": "61ab1d594a0fef3f27dc665a",
+        "name": "home & furniture",
+        "slug": "home-and-furniture"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://ae01.alicdn.com/kf/H2df96d8bd02c44218bb6dda06fc393a9W/Multifunctional-Master-Bedroom-Leather-Queen-Double-Size-Bed-Modern-Ultimate-Smart-Bed-With-Storage-Luxury-Bedroom.jpg_Q90.jpg_.webp",
+      "slug": "bed-storage-leather-italian-furniture-sofa-luxury"
+    },
+    {
+      "id": "61ab48350f34753bcedfa862",
+      "title": "electrical maintenance tools kit boxes with plastic box",
+      "price": 90,
+      "category": {
+        "id": "61ab1d4e4a0fef3f27dc6657",
+        "name": "tools & hardware",
+        "slug": "tools-and-hardware"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://brincasa.vteximg.com.br/arquivos/ids/182666-800-800/102-2.jpg?v=637752820244330000",
+      "slug": "electrical-maintenance-tools-kit-boxes-with-plastic-box"
+    },
+    {
+      "id": "61ab484d0f34753bcedfa866",
+      "image": "https://www.rollingstone.com/wp-content/uploads/2021/12/Screen-Shot-2021-12-31-at-9.12.14-AM-e1658943916965.png?w=500",
+      "title": "Drill Tool Set High Quality Powerful Multifunction Portable Drill",
+      "price": 70,
+      "category": {
+        "id": "61ab1d4e4a0fef3f27dc6657",
+        "name": "tools & hardware",
+        "slug": "tools-and-hardware"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "slug": "drill-tool-set-high-quality-powerful-multifunction-portable-drill"
+    },
+    {
+      "id": "61ab68a30f34753bcedfa898",
+      "title": "heart rate monitor gps fitness smartwatch",
+      "price": 200,
+      "category": {
+        "id": "61ab1cf84a0fef3f27dc664a",
+        "name": "jewlary & watches",
+        "slug": "jewlary-and-watches"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://ae01.alicdn.com/kf/H615626dff6cd47688b2d069685110bc9G/Bozlun-B36M-Smart-Watch-Heart-Rate-Monitor-GPS-Sport-Fitness-Tracker-Smartwatch-For-Huawei-iphone-Samsung.jpg_Q90.jpg_.webp",
+      "slug": "heart-rate-monitor-gps-fitness-smartwatch"
+    },
+    {
+      "id": "61ebbfe64efdea94da60a734",
+      "title": "men Shoes",
+      "price": 45,
+      "category": {
+        "id": "61ab1ce24a0fef3f27dc6647",
+        "name": "women's fashion",
+        "slug": "womens-fashion"
+      },
+      "description": "Lorem ipsum dolor sit amet.",
+      "image": "https://assets.ajio.com/medias/sys_master/root/20220606/UHKh/629e1759aeb26921af113735/-288Wx360H-464443382-black-MODEL.jpg",
+      "slug": "men-shoes"
+    },
+    {
+      "id": "61ebc0034efdea57a860a746",
+      "title": "men Shoes",
+      "price": 45,
+      "category": {
+        "id": "61ab1ce24a0fef3f27dc6647",
+        "name": "women's fashion",
+        "slug": "womens-fashion"
+      },
+      "description": "sad",
+      "image": "https://cdn11.bigcommerce.com/s-pkla4xn3/images/stencil/1280x1280/products/20790/183132/Men-shoes-2018-fashion-new-arrivals-warm-winter-shoes-men-High-quality-frosted-suede-shoes-men__23327.1545975452.jpg?c=2?imbypass=on",
+      "slug": "men-shoes-8qkks"
+    },
+    {
+      "image": "https://i.pinimg.com/originals/c6/b8/20/c6b8208b254cc9df40fc6bff6cdcbe11.jpg",
+      "id": "61ebc05f4efdea55d360a756",
+      "title": "men Shoes",
+      "price": 45,
+      "category": {
+        "id": "61ab1ce24a0fef3f27dc6647",
+        "name": "women's fashion",
+        "slug": "womens-fashion"
+      },
+      "description": "sad",
+      "slug": "men-shoes-tx3zc"
+    },
+    {
+      "id": "F6sdAor",
+      "description": "teste",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAMAAAAt85rTAAABO1BMVEX9/f3+/v7QFxv7///IAAD15ej///337ez+/f/CAADJAADFAADRFh77//v/+v3zzM7XX2DIAAz/9fb11NTz2NnCGyL2///JIibUEBvTEyHPBhC9AAD/7/Dpop/PAADNGBvKLjDutLPSVFvNYWGxAADYgYLnn6Tt///3//fry83WEx/LVFfLGR717enpxcPhio/ZjpXnuLrglZLksqzKPknKGxXWdnvDLSP439/joabkrLLSQULoj43USU3VnJ7eur7FjpHMeovjysbUhoDfmI7JgYrZmKTw19HALzHYqan20Nnstrzn2ti+EhLTanHvwMjow73AQ0PaYW3LWFK8MzSyHR3VdnLVLzL85O3uoKrfDxnifoTgcnLLcXjLNELLRVDJZFzatKjljZrjyLzVNz3iV1npeICkAADZdoNEasHhAAAWXklEQVR4nO1ciX/TSJauUsnl0hl8pCJLiZSQy3GUy7RZhyPMwvRwJkA3Q88A3fT2sjv7//8F+17Jtg7LxDlgGn76gBBLpar66lW9q0ompEKFChUqVKhQoUKFChUqVKhQoUKFChUqVKhQoUKFChUqVKhQoUKFChUqVKhQoUKFChUqVLgs6HeOiuC3jorgt46K4LeOiuC3jorgt455CDIh1H8OJYJ94f5cO+YhSIjkglAGFIXzxXt0zZiHoHCQ3fDW7y51v0+CktVvr+pmsEC/OX5zSlDUA98bhH3qfHNKaS6CXNKbvq35P1DyzYlwLokQQbfMyBvodfGl+3PtmIsg6M+2NehE5hH9Ls0EZYzzzqDjhbfZ9zlFETd8L+r9x/dpBxVuhVFk68Mv2ZcvgrkJ1sLIi8K173MNAjhdjWzfu/FFO/MlUCRIXOa4bP8YnDInaxM4fd/wvGjAv2bnrgMFgkJIKtiCYd1hbjd3jx0Zmmbr7a/ZuetAkaB0hNwJbNu6RUVWgk",
+      "price": "123",
+      "slug": "teste",
+      "category": {
+        "id": "61ab1ce24a0fef3f27dc6647",
+        "name": "women's fashion",
+        "slug": "womens-fashion"
+      },
+      "title": "teste"
     }
-  },
-  {
-    "id": "61ab42600f34753bcedfa78b",
-    "title": "high quality men distress skinny blue jeans",
-    "price": 90,
-    "image": "https://i.ebayimg.com/images/g/qa0AAOSwDqliU9~V/s-l1600.jpg",
-    "category": {
-      "id": "61ab1ca64a0fef3f27dc663f",
-      "name": "men's fashion",
-      "slug": "mens-fashion"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "slug": "high-quality-men-distress-skinny-blue-jeans"
-  },
-  {
-    "id": "61ab42790f34753bcedfa78f",
-    "title": "cotton o neck mens clothing t shirts",
-    "price": 30,
-    "image": "https://ae01.alicdn.com/kf/HTB1A_ZiKpXXXXXRXpXXq6xXFXXX2/Bonplon-men-s-summer-clothing-o-neck-short-sleeve-T-shirt-slim-100-cotton-casual-male.jpg_.webp",
-    "description":"Lorem ipsum dolor sit amet.",
-    "slug": "cotton-o-neck-mens-clothing-t-shirts",
-    "category": {
-      "id": "61ab1ca64a0fef3f27dc663f",
-      "name": "men's fashion",
-      "slug": "mens-fashion"
-    }
-  },
-  {
-    "id": "61ab42d00f34753bcedfa79e",
-    "title": "cotton pullover embroidery sweatshirt women",
-    "price": 100,
-    "description":"Lorem ipsum dolor sit amet.",
-    "category": {
-      "id": "61ab1ce24a0fef3f27dc6647",
-      "name": "women's fashion",
-      "slug": "womens-fashion"
-    },
-    "image": "https://ae01.alicdn.com/kf/Hffca161fd64349079d88ce35a575393bV/Vintage-Letter-Embroidery-Loose-Sweatshirt-Women-2020-New-Cotton-Long-Sleeve-O-Neck-Oversized-Hoodie-Autumn.jpg_.webp",
-    "slug": "cotton-pullover-embroidery-sweatshirt-women"
-  },
-  {
-    "id": "61ab42e90f34753bcedfa7a2",
-    "title": "breast button belt sur collar winter coat women",
-    "price": 120,
-    "category": {
-      "id": "61ab1ce24a0fef3f27dc6647",
-      "name": "women's fashion",
-      "slug": "womens-fashion"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://m.media-amazon.com/images/I/71toFv2rIuL._AC_UY1000_.jpg",
-    "slug": "breast-button-belt-sur-collar-winter-coat-women"
-  },
-  {
-    "id": "61ab431c0f34753bcedfa7a6",
-    "title": "running sneaker",
-    "price": 200,
-    "category": {
-      "id": "61ab1d0e4a0fef3f27dc664d",
-      "name": "bags & shoes",
-      "slug": "bags-and-shoes"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://www.brooksrunning.com/dw/image/v2/BGPF_PRD/on/demandware.static/-/Sites-brooks-master-catalog/default/dwf5484ed4/original/110369/110369-078-l-ghost-14-mens-cushion-running-shoe.jpg?sw=425&sh=425&sm=fit&sfrm=png&bgcolor=F1F3F6",
-    "slug": "running-sneaker"
-  },
-  {
-    "id": "61ab43350f34753bcedfa7aa",
-    "title": "men casual shoes sports running sneakers",
-    "price": 100,
-    "category": {
-      "id": "61ab1d0e4a0fef3f27dc664d",
-      "name": "bags & shoes",
-      "slug": "bags-and-shoes"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://img.joomcdn.net/26f03b0b01e74c933af18ee4b5f8c0dad887c10e_original.jpeg",
-    "slug": "men-casual-shoes-sports-running-sneakers"
-  },
-  {
-    "id": "61ab434b0f34753bcedfa7ae",
-    "title": "premium leather matt black casual boot",
-    "price": 250,
-    "category": {
-      "id": "61ab1d0e4a0fef3f27dc664d",
-      "name": "bags & shoes",
-      "slug": "bags-and-shoes"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://cdn.shopify.com/s/files/1/0419/1525/products/1024x1024-Men-President-BlackMatte-191107-1.jpg?v=1573146590",
-    "slug": "premium-leather-matt-black-casual-boot"
-  },
-  {
-    "id": "61ab44f40f34753bcedfa819",
-    "title": "waterproof fitness racker sports watch",
-    "price": 140,
-    "category": {
-      "id": "61ab1cf84a0fef3f27dc664a",
-      "name": "jewlary & watches",
-      "slug": "jewlary-and-watches"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvF-kd7oNKNJOJ0YeQW30tCAGGR8XCKiZ5JQzp9ApWE6rd1PX1N10iGskWTrfHAdG29nI&usqp=CAU",
-    "slug": "waterproof-fitness-racker-sports-watch"
-  },
-  {
-    "id": "61ab450a0f34753bcedfa81d",
-    "title": "bracelet blood pressure sport fitness smartwatch",
-    "price": 120,
-    "category": {
-      "id": "61ab1cf84a0fef3f27dc664a",
-      "name": "jewlary & watches",
-      "slug": "jewlary-and-watches"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://cf.shopee.com.br/file/d929cabac7a135b12ed3338d63ce0c6b",
-    "slug": "bracelet-blood-pressure-sport-fitness-smartwatch"
-  },
-  {
-    "id": "61ab47110f34753bcedfa83f",
-    "title": "Sceptre LED  curved 2xHDMI display port monitor",
-    "price": 149,
-    "category": {
-      "id": "61ab1d274a0fef3f27dc6650",
-      "name": "computers",
-      "slug": "computers"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://m.media-amazon.com/images/I/412QIfxzozL._AC_SY1000_.jpg",
-    "slug": "sceptre-led-curved-2xhdmi-display-port-monitor"
-  },
-  {
-    "id": "61ab472c0f34753bcedfa843",
-    "title": "ASUS Full HD HDMI Sync Eye Care eSports Gaming Monitor",
-    "price": 159,
-    "category": {
-      "id": "61ab1d274a0fef3f27dc6650",
-      "name": "computers",
-      "slug": "computers"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://m.media-amazon.com/images/I/515dm5sPwVL._AC_SY450_.jpg",
-    "slug": "asus-full-hd-hdmi-sync-eye-care-esports-gaming-monitor"
-  },
-  {
-    "id": "61ab475a0f34753bcedfa847",
-    "title": "iphone 13 pro black color 512gb storage",
-    "price": 999,
-    "category": {
-      "id": "61ab1d3b4a0fef3f27dc6654",
-      "name": "phone & tablets",
-      "slug": "phone-and-tablets"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://m.media-amazon.com/images/I/61eDXs9QFNL.jpg",
-    "slug": "iphone-13-pro-black-color-512gb-storage"
-  },
-  {
-    "id": "61ab47c20f34753bcedfa853",
-    "title": "Dual 3G Phone Call Octa Core 10 Inch Android Tablet",
-    "price": 700,
-    "category": {
-      "id": "61ab1d3b4a0fef3f27dc6654",
-      "name": "phone & tablets",
-      "slug": "phone-and-tablets"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://images-americanas.b2w.io/produtos/4392791031/imagens/tablet-android-8-1-4g-64g-de-10-1-polegadas-quad-core-wifi-bluetoothv4-0-laptop-dual-sim-prata-preto-ouro-rosa-azul-preto/4392791031_1_large.jpg",
-    "slug": "dual-3g-phone-call-octa-core-10-inch-android-tablet"
-  },
-  {
-    "id": "61ab47e70f34753bcedfa857",
-    "title": "RGB Gaming Chair with Lights and Speakers",
-    "price": 600,
-    "category": {
-      "id": "61ab1d594a0fef3f27dc665a",
-      "name": "home & furniture",
-      "slug": "home-and-furniture"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://i5.walmartimages.com/asr/caeed419-10f5-4876-97a2-daf64d608e91.0b040775c8aacc244ce78707080a2614.jpeg",
-    "slug": "rgb-gaming-chair-with-lights-and-speakers"
-  },
-  {
-    "id": "61ab47fd0f34753bcedfa85b",
-    "title": "Bed Storage Leather Italian Furniture Sofa Luxury",
-    "price": 750,
-    "category": {
-      "id": "61ab1d594a0fef3f27dc665a",
-      "name": "home & furniture",
-      "slug": "home-and-furniture"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://ae01.alicdn.com/kf/H2df96d8bd02c44218bb6dda06fc393a9W/Multifunctional-Master-Bedroom-Leather-Queen-Double-Size-Bed-Modern-Ultimate-Smart-Bed-With-Storage-Luxury-Bedroom.jpg_Q90.jpg_.webp",
-    "slug": "bed-storage-leather-italian-furniture-sofa-luxury"
-  },
-  {
-    "id": "61ab48350f34753bcedfa862",
-    "title": "electrical maintenance tools kit boxes with plastic box",
-    "price": 90,
-    "category": {
-      "id": "61ab1d4e4a0fef3f27dc6657",
-      "name": "tools & hardware",
-      "slug": "tools-and-hardware"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://brincasa.vteximg.com.br/arquivos/ids/182666-800-800/102-2.jpg?v=637752820244330000",
-    "slug": "electrical-maintenance-tools-kit-boxes-with-plastic-box"
-  },
-  {
-    "id": "61ab484d0f34753bcedfa866",
-    "image": "https://www.rollingstone.com/wp-content/uploads/2021/12/Screen-Shot-2021-12-31-at-9.12.14-AM-e1658943916965.png?w=500",
-    "title": "Drill Tool Set High Quality Powerful Multifunction Portable Drill",
-    "price": 70,
-    "category": {
-      "id": "61ab1d4e4a0fef3f27dc6657",
-      "name": "tools & hardware",
-      "slug": "tools-and-hardware"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "slug": "drill-tool-set-high-quality-powerful-multifunction-portable-drill"
-  },
-  {
-    "id": "61ab68a30f34753bcedfa898",
-    "title": "heart rate monitor gps fitness smartwatch",
-    "price": 200,
-    "category": {
-      "id": "61ab1cf84a0fef3f27dc664a",
-      "name": "jewlary & watches",
-      "slug": "jewlary-and-watches"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://ae01.alicdn.com/kf/H615626dff6cd47688b2d069685110bc9G/Bozlun-B36M-Smart-Watch-Heart-Rate-Monitor-GPS-Sport-Fitness-Tracker-Smartwatch-For-Huawei-iphone-Samsung.jpg_Q90.jpg_.webp",
-    "slug": "heart-rate-monitor-gps-fitness-smartwatch"
-  },
-  {
-    "id": "61ebbfe64efdea94da60a734",
-    "title": "men Shoes",
-    "price": 45,
-    "category": {
-      "id": "61ab1ce24a0fef3f27dc6647",
-      "name": "women's fashion",
-      "slug": "womens-fashion"
-    },
-    "description":"Lorem ipsum dolor sit amet.",
-    "image": "https://assets.ajio.com/medias/sys_master/root/20220606/UHKh/629e1759aeb26921af113735/-288Wx360H-464443382-black-MODEL.jpg",
-    "slug": "men-shoes"
-  },
-  {
-    "id": "61ebc0034efdea57a860a746",
-    "title": "men Shoes",
-    "price": 45,
-    "category": {
-      "id": "61ab1ce24a0fef3f27dc6647",
-      "name": "women's fashion",
-      "slug": "womens-fashion"
-    },
-    "description": "sad",
-    "image": "https://cdn11.bigcommerce.com/s-pkla4xn3/images/stencil/1280x1280/products/20790/183132/Men-shoes-2018-fashion-new-arrivals-warm-winter-shoes-men-High-quality-frosted-suede-shoes-men__23327.1545975452.jpg?c=2?imbypass=on",
-    "slug": "men-shoes-8qkks"
-  },
-  {
-    "image": "https://i.pinimg.com/originals/c6/b8/20/c6b8208b254cc9df40fc6bff6cdcbe11.jpg",
-    "id": "61ebc05f4efdea55d360a756",
-    "title": "men Shoes",
-    "price": 45,
-    "category": {
-      "id": "61ab1ce24a0fef3f27dc6647",
-      "name": "women's fashion",
-      "slug": "womens-fashion"
-    },
-    "description": "sad",
-    "slug": "men-shoes-tx3zc"
-  },
-  {
-    "id": "61ebc0644efdea030e60a76a",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-hAxYbzaEcrW7l-7An4aqc5oWjNw8_GjooEocT9xKTHpCXRN-HPJqWMa73o_yeSg-Kcs&usqp=CAU",
-    "title": "men Shoes",
-    "price": 45,
-    "category": {
-      "id": "61ab1ce24a0fef3f27dc6647",
-      "name": "women's fashion",
-      "slug": "womens-fashion"
-    },
-    "description": "sad",
-    "slug": "men-shoes-tmasw"
-  }
-]
+  ]
+}
