@@ -13,10 +13,11 @@ import { useTheme } from '@emotion/react';
 import { NewButtonComponent } from '~/components/NewButton';
 import { CopyrightComponent } from '~/components/Copyright';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
 
 export const Home = () => {
   const location = useLocation();
-  const { data: products, categories, deleteItem, editItem, addItem } = useApi();
+  const { data: products, categories, deleteItem, editItem, addItem, isLoading } = useApi();
   const [isOpen, setIsOpen] = useState(false);
   const [tabValue, setTabValue] = useState('all');
   const theme = useTheme();
@@ -46,29 +47,36 @@ export const Home = () => {
     <ThemeProvider theme={theme}>
       <NavBarComponent
         props={{ children: <></> }}
-        navProps={{ handleChange, categories, toggleCart, tabValue }}
+        navProps={{ handleChange, categories, toggleCart, tabValue, isLoading }}
       />
       <main>
         <Container sx={{ py: 6 }} maxWidth='md'>
-          <Grid container spacing={6}>
-            {products?.length ? (
-              products.map((product: Product) => (
-                <CardComponent
-                  key={product.id}
-                  product={product}
-                  deleteItem={deleteItem}
-                  editItem={editItem}
-                  categories={categories}
-                />
-              ))
-            ) : (
-              <Container sx={{ py: 10 }} maxWidth='lg'>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                  <Typography>No Products</Typography>
-                </Box>
-              </Container>
-            )}
-          </Grid>
+          {!isLoading && (
+            <Grid container spacing={6}>
+              {products?.length ? (
+                products.map((product: Product) => (
+                  <CardComponent
+                    key={product.id}
+                    product={product}
+                    deleteItem={deleteItem}
+                    editItem={editItem}
+                    categories={categories}
+                  />
+                ))
+              ) : (
+                <Container sx={{ py: 10 }} maxWidth='lg'>
+                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Typography>No Products</Typography>
+                  </Box>
+                </Container>
+              )}
+            </Grid>
+          )}
+          {isLoading && (
+            <Grid container spacing={6} justifyContent='center' alignItems='center'>
+              <CircularProgress />
+            </Grid>
+          )}
         </Container>
         <NewButtonComponent categories={categories} addItem={addItem} />
       </main>

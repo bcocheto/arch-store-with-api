@@ -1,4 +1,4 @@
-import { Box, ButtonGroup, Menu, MenuItem, TextField } from '@mui/material';
+import { Box, ButtonGroup, Menu, MenuItem, Paper, TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -46,132 +46,134 @@ export const CardComponent = ({ product, categories, deleteItem, editItem }: Car
 
   return (
     <Grid item md={5}>
-      <CardWrapper>
-        <Card sx={{ height: '600px', display: 'flex', flexDirection: 'column', width: '350px' }}>
-          <div style={{ position: 'absolute', margin: '10px' }}>
-            <Button
-              aria-label='more'
-              id='long-button'
-              aria-controls={open ? 'long-menu' : undefined}
-              aria-expanded={open ? 'true' : undefined}
-              aria-haspopup='true'
-              variant='contained'
-              color='info'
-              onClick={handleClick}
-              sx={{ boxShadow: ' 2px 2px 5px 0px rgba(0,0,0,0.75)' }}
-            >
-              Settings
-            </Button>
-            <Menu
-              id='long-menu'
-              MenuListProps={{
-                'aria-labelledby': 'long-button',
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              PaperProps={{
-                style: {
-                  maxHeight: ITEM_HEIGHT * 4.5,
-                  width: '20ch',
-                },
-              }}
-            >
-              <MenuItem>
-                <Button variant='text' color='info' endIcon={<EditIcon />} onClick={toggleModal}>
-                  Edit
-                </Button>
-              </MenuItem>
-              <MenuItem>
-                <Button
-                  variant='text'
-                  color='error'
-                  endIcon={<DeleteForeverIcon />}
-                  onClick={deleteItem(product.id)}
-                >
-                  Delete
-                </Button>
-              </MenuItem>
-            </Menu>
-          </div>
-          <CardMedia
-            component='img'
-            sx={{
-              objectFit: 'fill',
-              height: '350px',
-            }}
-            image={product.image}
-            alt={product.slug}
-          />
-          <CardContent>
-            <Typography noWrap gutterBottom variant='h5' component='h2'>
-              {product.title}
-            </Typography>
-            <Typography>{product.description ? product.description : 'Sem descrição'}</Typography>
-            <Typography>{formatPrice(product.price)}</Typography>
-          </CardContent>
-          <Box
-            sx={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <ButtonGroup aria-label='text button group' size='large'>
+      <Paper>
+        <CardWrapper>
+          <Card sx={{ height: '600px', display: 'flex', flexDirection: 'column', width: '350px' }}>
+            <div style={{ position: 'absolute', margin: '10px' }}>
               <Button
+                aria-label='more'
+                id='long-button'
+                aria-controls={open ? 'long-menu' : undefined}
+                aria-expanded={open ? 'true' : undefined}
+                aria-haspopup='true'
                 variant='contained'
                 color='info'
-                startIcon={<AddCircleOutlineIcon />}
-                onClick={() => cart.increaseItem(product.id)}
-              ></Button>
-              <Box sx={{ width: '50px', display: 'flex', justifyContent: 'center' }}>
-                <TextField
-                  disabled
-                  variant='standard'
-                  size='medium'
-                  value={quantity}
-                  margin='dense'
-                  sx={{ input: { textAlign: 'center' } }}
-                />
-              </Box>
-              <Button
-                variant='contained'
-                color='info'
-                endIcon={<RemoveCircleOutlineIcon />}
-                onClick={() => cart.decreaseItem(product.id)}
-              ></Button>
-            </ButtonGroup>
-          </Box>
-          {quantity > 0 && (
+                onClick={handleClick}
+                sx={{ boxShadow: ' 2px 2px 5px 0px rgba(0,0,0,0.75)' }}
+              >
+                Settings
+              </Button>
+              <Menu
+                id='long-menu'
+                MenuListProps={{
+                  'aria-labelledby': 'long-button',
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                PaperProps={{
+                  style: {
+                    maxHeight: ITEM_HEIGHT * 4.5,
+                    width: '20ch',
+                  },
+                }}
+              >
+                <MenuItem>
+                  <Button variant='text' color='info' endIcon={<EditIcon />} onClick={toggleModal}>
+                    Edit
+                  </Button>
+                </MenuItem>
+                <MenuItem>
+                  <Button
+                    variant='text'
+                    color='error'
+                    endIcon={<DeleteForeverIcon />}
+                    onClick={deleteItem(product.id)}
+                  >
+                    Delete
+                  </Button>
+                </MenuItem>
+              </Menu>
+            </div>
+            <CardMedia
+              component='img'
+              sx={{
+                objectFit: 'fill',
+                height: '350px',
+              }}
+              image={product.image}
+              alt={product.slug}
+            />
+            <CardContent>
+              <Typography noWrap gutterBottom variant='h5' component='h2'>
+                {product.title}
+              </Typography>
+              <Typography>{product.description ? product.description : 'Sem descrição'}</Typography>
+              <Typography>{formatPrice(product.price)}</Typography>
+            </CardContent>
             <Box
-              mt={2}
-              mb={2}
               sx={{
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'center',
               }}
             >
-              <Button
-                variant='contained'
-                color='error'
-                size='small'
-                endIcon={<RemoveShoppingCartIcon />}
-                onClick={() => cart.removeItem(product.id)}
-              >
-                Remove
-              </Button>
+              <ButtonGroup aria-label='text button group' size='large'>
+                <Button
+                  variant='contained'
+                  color='info'
+                  startIcon={<AddCircleOutlineIcon />}
+                  onClick={() => cart.increaseItem(product.id)}
+                ></Button>
+                <Box sx={{ width: '50px', display: 'flex', justifyContent: 'center' }}>
+                  <TextField
+                    disabled
+                    variant='standard'
+                    size='medium'
+                    value={quantity}
+                    margin='dense'
+                    sx={{ input: { textAlign: 'center' } }}
+                  />
+                </Box>
+                <Button
+                  variant='contained'
+                  color='info'
+                  endIcon={<RemoveCircleOutlineIcon />}
+                  onClick={() => cart.decreaseItem(product.id)}
+                ></Button>
+              </ButtonGroup>
             </Box>
-          )}
-        </Card>
-      </CardWrapper>
-      <EditModalComponent
-        isOpen={isOpen}
-        product={product}
-        editItem={editItem}
-        toggleModal={toggleModal}
-        categories={categories}
-      />
+            {quantity > 0 && (
+              <Box
+                mt={2}
+                mb={2}
+                sx={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                <Button
+                  variant='contained'
+                  color='error'
+                  size='small'
+                  endIcon={<RemoveShoppingCartIcon />}
+                  onClick={() => cart.removeItem(product.id)}
+                >
+                  Remove
+                </Button>
+              </Box>
+            )}
+          </Card>
+        </CardWrapper>
+        <EditModalComponent
+          isOpen={isOpen}
+          product={product}
+          editItem={editItem}
+          toggleModal={toggleModal}
+          categories={categories}
+        />
+      </Paper>
     </Grid>
   );
 };

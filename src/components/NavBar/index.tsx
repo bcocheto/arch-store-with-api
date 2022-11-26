@@ -6,7 +6,16 @@ import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import { CartButtonComponent } from '../CartButton';
-import { FormControlLabel, FormGroup, styled, Switch, Tab, Tabs } from '@mui/material';
+import {
+  FormControlLabel,
+  FormGroup,
+  Grid,
+  LinearProgress,
+  styled,
+  Switch,
+  Tab,
+  Tabs,
+} from '@mui/material';
 import { Category } from '~/types/Category';
 import { useAppThemeContext } from '~/contexts/ThemeContext';
 
@@ -15,6 +24,7 @@ interface NavProps {
   handleChange: (_event: React.SyntheticEvent<Element, Event>, value: any) => void;
   tabValue: string;
   categories: Category[];
+  isLoading: boolean;
 }
 interface Props {
   window?: () => Window;
@@ -132,6 +142,11 @@ export const NavBarComponent = ({ props, navProps }: { props: Props; navProps: N
               justifyContent: 'center',
             }}
           >
+            {navProps.isLoading && (
+              <Grid container spacing={6} justifyContent='center' alignItems='center'>
+                <LinearProgress />
+              </Grid>
+            )}
             <Tabs
               indicatorColor='secondary'
               textColor='inherit'
@@ -139,10 +154,16 @@ export const NavBarComponent = ({ props, navProps }: { props: Props; navProps: N
               value={navProps.tabValue}
               onChange={navProps.handleChange}
             >
-              <Tab value='all' label='All Products' />
-              {navProps.categories.map((element: Category) => (
-                <Tab key={element.id} value={element.slug} label={element.name} />
-              ))}
+              {!navProps.isLoading && (
+                <>
+                  <Tab value='all' label='All Products' />
+                  <>
+                    {navProps.categories.map((element: Category) => (
+                      <Tab key={element.id} value={element.slug} label={element.name} />
+                    ))}
+                  </>
+                </>
+              )}
             </Tabs>
           </Box>
         </Box>

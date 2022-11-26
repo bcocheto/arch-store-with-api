@@ -10,7 +10,7 @@ export const useApi = () => {
   const location = useLocation();
   const path = location.pathname.replace('/', '');
   const [data, setData] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -36,36 +36,58 @@ export const useApi = () => {
   }, [path]);
 
   const createCategories = async () => {
-    const allItems = await items.getAll();
-    if (allItems instanceof Error) return;
-    const categories = allItems?.map((item: Product) => item.category);
-    const uniqueIds: string[] = [];
-    const uniqueCategories = categories?.filter((element: Category) => {
-      const isDuplicate = uniqueIds.includes(element.id);
-      if (!isDuplicate) {
-        uniqueIds.push(element.id);
-        return true;
-      }
-      return false;
-    });
-    setCategories(uniqueCategories);
+    try {
+      setIsLoading(true);
+      const allItems = await items.getAll();
+      if (allItems instanceof Error) return;
+      const categories = allItems?.map((item: Product) => item.category);
+      const uniqueIds: string[] = [];
+      const uniqueCategories = categories?.filter((element: Category) => {
+        const isDuplicate = uniqueIds.includes(element.id);
+        if (!isDuplicate) {
+          uniqueIds.push(element.id);
+          return true;
+        }
+        return false;
+      });
+      setCategories(uniqueCategories);
+      setIsLoading(false);
+    } catch (error) {
+      return;
+    }
   };
 
   const deleteItem = useCallback(
-    (itemId: string) => () => {
-      items.deleteById(itemId);
+    (itemId: string) => async () => {
+      try {
+        setIsLoading(true);
+        const data = await items.deleteById(itemId);
+        setIsLoading(false);
+      } catch (error) {
+        return false;
+      }
     },
     [],
   );
 
-  const addItem = useCallback((item: Product) => {
-    items.create(item);
-    console.log('create', item);
+  const addItem = useCallback(async (item: Product) => {
+    try {
+      setIsLoading(true);
+      const data = await items.create(item);
+      setIsLoading(false);
+    } catch (error) {
+      return;
+    }
   }, []);
 
   const editItem = useCallback((newItem: Product) => {
-    console.log('edit', newItem);
-    items.updateById(newItem.id, newItem);
+    try {
+      setIsLoading(true);
+      items.updateById(newItem.id, newItem);
+      setIsLoading(false);
+    } catch (error) {
+      return;
+    }
   }, []);
 
   return { data, isLoading, categories, deleteItem, editItem, addItem };
