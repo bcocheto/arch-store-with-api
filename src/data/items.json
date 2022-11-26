@@ -272,19 +272,6 @@
       },
       "description": "sad",
       "slug": "men-shoes-tx3zc"
-    },
-    {
-      "id": "F6sdAor",
-      "description": "teste",
-      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAMAAAAt85rTAAABO1BMVEX9/f3+/v7QFxv7///IAAD15ej///337ez+/f/CAADJAADFAADRFh77//v/+v3zzM7XX2DIAAz/9fb11NTz2NnCGyL2///JIibUEBvTEyHPBhC9AAD/7/Dpop/PAADNGBvKLjDutLPSVFvNYWGxAADYgYLnn6Tt///3//fry83WEx/LVFfLGR717enpxcPhio/ZjpXnuLrglZLksqzKPknKGxXWdnvDLSP439/joabkrLLSQULoj43USU3VnJ7eur7FjpHMeovjysbUhoDfmI7JgYrZmKTw19HALzHYqan20Nnstrzn2ti+EhLTanHvwMjow73AQ0PaYW3LWFK8MzSyHR3VdnLVLzL85O3uoKrfDxnifoTgcnLLcXjLNELLRVDJZFzatKjljZrjyLzVNz3iV1npeICkAADZdoNEasHhAAAWXklEQVR4nO1ciX/TSJauUsnl0hl8pCJLiZSQy3GUy7RZhyPMwvRwJkA3Q88A3fT2sjv7//8F+17Jtg7LxDlgGn76gBBLpar66lW9q0ompEKFChUqVKhQoUKFChUqVKhQoUKFChUqVKhQoUKFChUqVKhQoUKFChUqVKhQoUKFChUqVLgs6HeOiuC3jorgt46K4LeOiuC3jorgt455CDIh1H8OJYJ94f5cO+YhSIjkglAGFIXzxXt0zZiHoHCQ3fDW7y51v0+CktVvr+pmsEC/OX5zSlDUA98bhH3qfHNKaS6CXNKbvq35P1DyzYlwLokQQbfMyBvodfGl+3PtmIsg6M+2NehE5hH9Ls0EZYzzzqDjhbfZ9zlFETd8L+r9x/dpBxVuhVFk68Mv2ZcvgrkJ1sLIi8K173MNAjhdjWzfu/FFO/MlUCRIXOa4bP8YnDInaxM4fd/wvGjAv2bnrgMFgkJIKtiCYd1hbjd3jx0Zmmbr7a/ZuetAkaB0hNwJbNu6RUVWgk",
-      "price": "111",
-      "slug": "teste",
-      "category": {
-        "id": "61ab1ce24a0fef3f27dc6647",
-        "name": "women's fashion",
-        "slug": "womens-fashion"
-      },
-      "title": "TESTE"
     }
   ]
 }

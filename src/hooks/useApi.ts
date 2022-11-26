@@ -38,9 +38,6 @@ export const useApi = () => {
   const createCategories = async () => {
     const allItems = await items.getAll();
     if (allItems instanceof Error) return;
-
-    console.log(allItems);
-
     const categories = allItems?.map((item: Product) => item.category);
     const uniqueIds: string[] = [];
     const uniqueCategories = categories?.filter((element: Category) => {

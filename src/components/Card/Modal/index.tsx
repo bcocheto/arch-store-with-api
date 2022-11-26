@@ -35,11 +35,9 @@ export const EditModalComponent = ({
     const newData = { ...data };
     newData['category'] = category[0];
     setData(newData);
-    console.log('data', data);
   };
 
   const onSubmit = (data: any) => {
-    console.log('data', data);
     const newItem: Product = {
       ...product,
       ...data,
